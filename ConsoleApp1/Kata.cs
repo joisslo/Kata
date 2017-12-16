@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeKata
 
@@ -430,5 +428,109 @@ namespace CodeKata
         }
 
         #endregion TripleDouble(long num1, long num2)
+
+        #region Likes(string[] name)
+
+        public static string Likes(string[] name)
+        {
+            switch (name.Length)
+            {
+                case 0:
+                    {
+                        return "no one likes this";
+                    }
+                case 1:
+                    {
+                        return string.Format("{0} likes this", name[0]);
+                    }
+                case 2:
+                    {
+                        return string.Format("{0} and {1} like this", name[0], name[1]);
+                    }
+                case 3:
+                    {
+                        return string.Format("{0}, {1} and {2} like this", name[0], name[1], name[2]);
+                    }
+                default:
+                    {
+                        return string.Format("{0}, {1} and {2} others like this", name[0], name[1], name.Length - 2);
+                    }
+            }
+        }
+
+        #endregion Likes(string[] name)
+
+        #region Tribonacci(double[] signature, int n)
+
+        // Fibonacci sequencer except summing previous 3 values instead of 2
+        // Manually
+        public static double[] Tribonacci(double[] signature, int n)
+        {
+            if (n == 0)
+            {
+                return new double[1];
+            }
+            else if (n < 3)
+            {
+                double[] newArray = new double[n];
+                for (int element = 0; element < newArray.Length; element++)
+                {
+                    newArray[element] = signature[element];
+                }
+                return newArray;
+            }
+            else
+            {
+                double[] tribonacci = new double[n];
+                signature.CopyTo(tribonacci, 0);
+                for (int index = 0; index < n - 3; index++)
+                {
+                    tribonacci[index + 3] = tribonacci[index] + tribonacci[index + 1] + tribonacci[index + 2];
+                }
+                return tribonacci;
+            }
+        }
+
+        #endregion Tribonacci(double[] signature, int n)
+
+        #region CountSmileys(string[] smileys)
+
+        // Using '.Contains()'
+        public static int CountSmileys(string[] smileys)
+        {
+            int count = 0;
+            string[] validSmileys = { ":D", ":~)", ";~D", ":)" };
+            foreach (string smiley in smileys)
+            {
+                if (validSmileys.Contains(smiley))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        // Manually
+        public static int CountSmileys2(string[] smileys)
+        {
+            int count = 0;
+            string[] validSmileys = { ":)", ":D", ";-D", ":~)" };
+            foreach (string smiley in smileys)
+            {
+                foreach (string validSmiley in validSmileys)
+                {
+                    if (smiley.Equals(validSmiley))
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        #endregion CountSmileys(string[] smileys)
+
+        #region
+        #endregion
     }
 }
