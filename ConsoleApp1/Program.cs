@@ -6,7 +6,7 @@ namespace CodeKata
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Kata.CountSmileys2(new string[] { ":D", ":~)", ";~D", ":)" }));
+            Console.WriteLine(Kata.SongDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"));
 
             Console.WriteLine("Press any key to close...");
             Console.ReadKey();

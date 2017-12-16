@@ -532,6 +532,8 @@ namespace CodeKata
 
         #endregion CountSmileys(string[] smileys)
 
+        //TODO:
+
         #region BouncingBall(double h, double bounce, double window)
 
         //A child plays with a ball on the nth floor of a big building.The height of this floor is known.
@@ -555,5 +557,19 @@ namespace CodeKata
         }
 
         #endregion BouncingBall(double h, double bounce, double window)
+
+        #region SongDecoder(string input)
+
+        public static string SongDecoder(string input)
+        {
+            input = input.ToUpper().Replace("WUB", " ").Trim();
+            while (input.Contains("  "))
+            {
+                input = input.Replace("  ", " ");
+            }
+            return input;
+        }
+
+        #endregion SongDecoder(string input)
     }
 }
