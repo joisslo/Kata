@@ -571,5 +571,29 @@ namespace CodeKata
         }
 
         #endregion SongDecoder(string input)
+
+        #region DuplicateCount(string input)
+        public static int DuplicateCount(string input)
+        {
+            input = input.ToLower();
+            int count = 0;
+            for (char c = 'a'; c <= 'z'; c++)
+            {
+                int match = 0;
+                foreach (char letter in input)
+                {
+                    if (c.Equals(letter))
+                    {
+                        match++;
+                    }
+                }
+                if (match > 1)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        #endregion
     }
 }
