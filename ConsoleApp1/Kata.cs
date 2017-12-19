@@ -573,11 +573,17 @@ namespace CodeKata
         #endregion SongDecoder(string input)
 
         #region DuplicateCount(string input)
+        //Write a function that will return the count of distinct case-insensitive 
+        //alphabetic characters and numeric digits that occur more than once in the 
+        //input string. The input string can be assumed to contain only 
+        //alphabets(both uppercase and lowercase) and numeric digits.
+
+        //Manually
         public static int DuplicateCount(string input)
         {
             input = input.ToLower();
             int count = 0;
-            for (char c = 'a'; c <= 'z'; c++)
+            for (char c = '0'; c <= 'z'; c++)
             {
                 int match = 0;
                 foreach (char letter in input)
@@ -593,6 +599,12 @@ namespace CodeKata
                 }
             }
             return count;
+        }
+
+        //Using linq
+        public static int DuplicateCount2(string input)
+        {
+            return input.ToLower().GroupBy(c => c).Where(g => g.Count() > 1).Count();
         }
         #endregion
     }
